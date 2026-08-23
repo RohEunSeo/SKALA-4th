@@ -1,0 +1,47 @@
+# ================================================================
+# 파일명   : docker-compose.yml
+# 코드 내용: Docker Compose를 활용한 Web-WAS-DB 3-Tier 미니 게시판 구성
+# 작성자   : 노은서
+# 작성일자 : 2026-08-21
+# 주요 기능: 컨테이너 통합 실행, 서비스 간 네트워크 자동 연결, 데이터 볼륨 유지
+# 코드 리뷰 동료: 이정현
+# ================================================================
+
+services:
+  web:
+    build: ./web
+    ports:
+      - "8080:80"
+    depends_on:
+      - was # was가 먼저 실행된 후 web이 실행되도록 설정
+
+  was:
+    build: ./was
+    ports:
+      - "5001:5000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=board
+      - DB_USER=postgres
+      - DB_PASSWORD=mypassword
+    depends_on:
+      db:
+        condition: service_healthy  # DB 준비 완료 후 WAS 시작
+
+  db:
+    image: postgres:17
+    environment:
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=board
+      - POSTGRES_USER=postgres
+    volumes:
+      - board-data:/var/lib/postgresql/data  # DB 데이터를 볼륨에 저장
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s    # 5초마다 체크
+      timeout: 3s     # 3초 안에 응답 없으면 실패
+      retries: 5      # 5번 실패하면 unhealthy
+
+# 볼륨 이름 선언
+volumes:
+  board-data:
