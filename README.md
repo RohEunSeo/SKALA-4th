@@ -42,20 +42,57 @@ SKALA-4th/
 
 ## 🗂️ 프로젝트별 요약
 
-### AI
+### Git
 
-**`sllm-fine-tuning`**
-<br/>
-<img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
-<img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
-<img alt="Hugging Face" src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black"/>
-<img alt="Jupyter" src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white"/>
-<br/>
-Hugging Face sLLM 실행/비교, LoRA SFT로 Text-to-SQL 업무 규칙 파인튜닝
+<table>
+<tr>
+<td valign="top" width="50%">
 
-**`llm-transformer-agent`** — 진행 예정 (플레이스홀더)
+**`git-profile-lab`**
+<br/>
+<img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/>
+<img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
+<br/>
+Git 저장소 생성부터 커밋·브랜치·원격 push까지 기본기 실습
+
+</td>
+<td valign="top" width="50%"></td>
+</tr>
+</table>
+
+### Frontend
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+**`todo-list`**
+<br/>
+<img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
+<img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
+<img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+<br/>
+바닐라 HTML/CSS/JS로 구현한 Todo 리스트
+
+</td>
+<td valign="top" width="50%">
+
+**`skala-vue`**
+<br/>
+<img alt="Vue.js" src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white"/>
+<img alt="Vite" src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"/>
+<br/>
+Vue 3 + Vite 기반 SPA 실습 프로젝트
+
+</td>
+</tr>
+</table>
 
 ### Backend
+
+<table>
+<tr>
+<td valign="top" width="50%">
 
 **`StockTrading` / `StockTrading2`**
 <br/>
@@ -65,6 +102,9 @@ Hugging Face sLLM 실행/비교, LoRA SFT로 Text-to-SQL 업무 규칙 파인튜
 <img alt="Gradle" src="https://img.shields.io/badge/Gradle-02303A?style=flat-square&logo=gradle&logoColor=white"/>
 <br/>
 Spring Boot + JPA 기반 주식 거래 시뮬레이션 API (day2 → day3 CRUD·분석 기능 확장)
+
+</td>
+<td valign="top" width="50%">
 
 **`shopapi`**
 <br/>
@@ -76,44 +116,15 @@ Spring Boot + JPA 기반 주식 거래 시뮬레이션 API (day2 → day3 CRUD·
 <br/>
 JWT 인증과 Swagger UI를 갖춘 SKALA 굿즈 쇼핑몰 REST API
 
-### Cloud
-
-**`docker-container/board`**
-<br/>
-<img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
-<img alt="Docker Compose" src="https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white"/>
-<img alt="Flask" src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"/>
-<img alt="Nginx" src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white"/>
-<br/>
-게시판을 Web(Nginx)·WAS(Flask) 컨테이너로 분리한 Docker Compose 구성
-
-### Frontend
-
-**`todo-list`**
-<br/>
-<img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-<img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
-<img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
-<br/>
-바닐라 HTML/CSS/JS로 구현한 Todo 리스트
-
-**`skala-vue`**
-<br/>
-<img alt="Vue.js" src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white"/>
-<img alt="Vite" src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"/>
-<br/>
-Vue 3 + Vite 기반 SPA 실습 프로젝트
-
-### Git
-
-**`git-profile-lab`**
-<br/>
-<img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/>
-<img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/>
-<br/>
-Git 저장소 생성부터 커밋·브랜치·원격 push까지 기본기 실습
+</td>
+</tr>
+</table>
 
 ### ML
+
+<table>
+<tr>
+<td valign="top" width="50%">
 
 **`day1-async-data-pipeline`**
 <br/>
@@ -124,6 +135,57 @@ Git 저장소 생성부터 커밋·브랜치·원격 push까지 기본기 실습
 <img alt="Pytest" src="https://img.shields.io/badge/Pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white"/>
 <br/>
 asyncio + httpx 기반 비동기 데이터 파이프라인, Pandas/Parquet 변환 및 pytest 검증
+
+</td>
+<td valign="top" width="50%"></td>
+</tr>
+</table>
+
+### AI
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+**`sllm-fine-tuning`**
+<br/>
+<img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+<img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
+<img alt="Hugging Face" src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black"/>
+<img alt="Jupyter" src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white"/>
+<br/>
+Hugging Face sLLM 실행/비교, LoRA SFT로 Text-to-SQL 업무 규칙 파인튜닝
+
+</td>
+<td valign="top" width="50%">
+
+**`llm-transformer-agent`**
+<br/>
+진행 예정 (플레이스홀더)
+
+</td>
+</tr>
+</table>
+
+### Cloud
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+**`docker-container/board`**
+<br/>
+<img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/>
+<img alt="Docker Compose" src="https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white"/>
+<img alt="Flask" src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"/>
+<img alt="Nginx" src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white"/>
+<br/>
+게시판을 Web(Nginx)·WAS(Flask) 컨테이너로 분리한 Docker Compose 구성
+
+</td>
+<td valign="top" width="50%"></td>
+</tr>
+</table>
 
 ---
 
