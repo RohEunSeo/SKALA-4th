@@ -2,6 +2,8 @@
 
 <img alt="SKALA logo" src="assets/skala-logo.png" width="420"/>
 
+<br>
+
 <p>
   <img alt="Java" src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=openjdk&logoColor=white"/>
   <img alt="Spring Boot" src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/>
@@ -51,7 +53,7 @@ SKALA-4th/
 
 <table width="100%">
 <tr>
-<td valign="top">
+<td valign="top" width="960">
 
 **`git-profile-lab`**
 <br/>
@@ -68,7 +70,7 @@ Git/GitHub 기본기 실습
 
 <table width="100%">
 <tr>
-<td valign="top" width="50%">
+<td valign="top" width="480">
 
 **`todo-list`**
 <br/>
@@ -79,7 +81,7 @@ Git/GitHub 기본기 실습
 바닐라 JS Todo 리스트
 
 </td>
-<td valign="top" width="50%">
+<td valign="top" width="480">
 
 **`skala-vue`**
 <br/>
@@ -97,7 +99,7 @@ Vue 3 + Pinia SPA 실습
 
 <table width="100%">
 <tr>
-<td valign="top" width="50%">
+<td valign="top" width="480">
 
 **`StockTrading` / `StockTrading2`**
 <br/>
@@ -108,7 +110,7 @@ Vue 3 + Pinia SPA 실습
 JPA 기반 주식 거래 API
 
 </td>
-<td valign="top" width="50%">
+<td valign="top" width="480">
 
 **`shopapi`**
 <br/>
@@ -126,7 +128,7 @@ MyBatis 굿즈 쇼핑몰 API
 
 <table width="100%">
 <tr>
-<td valign="top">
+<td valign="top" width="960">
 
 **`day1-async-data-pipeline`**
 <br/>
@@ -144,7 +146,7 @@ asyncio 비동기 데이터 파이프라인
 
 <table width="100%">
 <tr>
-<td valign="top" width="50%">
+<td valign="top" width="480">
 
 **`sllm-fine-tuning`**
 <br/>
@@ -155,7 +157,7 @@ asyncio 비동기 데이터 파이프라인
 sLLM 비교 + LoRA 파인튜닝
 
 </td>
-<td valign="top" width="50%">
+<td valign="top" width="480">
 
 **`llm-transformer-agent`**
 <br/>
@@ -171,7 +173,7 @@ LLM·Agent 실습 (예정)
 
 <table width="100%">
 <tr>
-<td valign="top">
+<td valign="top" width="960">
 
 **`docker-container/board`**
 <br/>
