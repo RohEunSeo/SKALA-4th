@@ -1,8 +1,6 @@
 # SKALA 4th
 
-<div align="center">
-
-<img alt="SKALA logo" src="assets/skala-logo.png" width="260"/>
+<img alt="SKALA logo" src="assets/skala-logo.png" width="420"/>
 
 <p>
   <img alt="Java" src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=openjdk&logoColor=white"/>
@@ -17,8 +15,6 @@
 SK AI Leader Academy **SKALA 4기** 교육 과정에서 진행한 실습·과제 코드를 모아두는 기록용 저장소입니다.
 <br/>
 분야별(AI, Backend, Cloud, Frontend, ML, Git)로 폴더를 나누어 정리했습니다.
-
-</div>
 
 ## 📁 디렉토리 구조
 
@@ -53,7 +49,7 @@ SKALA-4th/
 
 ### Git
 
-<table>
+<table width="100%">
 <tr>
 <td valign="top">
 
@@ -70,7 +66,7 @@ Git/GitHub 기본기 실습
 
 ### Frontend
 
-<table>
+<table width="100%">
 <tr>
 <td valign="top" width="50%">
 
@@ -99,7 +95,7 @@ Vue 3 + Pinia SPA 실습
 
 ### Backend
 
-<table>
+<table width="100%">
 <tr>
 <td valign="top" width="50%">
 
@@ -128,7 +124,7 @@ MyBatis 굿즈 쇼핑몰 API
 
 ### ML
 
-<table>
+<table width="100%">
 <tr>
 <td valign="top">
 
@@ -146,7 +142,7 @@ asyncio 비동기 데이터 파이프라인
 
 ### AI
 
-<table>
+<table width="100%">
 <tr>
 <td valign="top" width="50%">
 
@@ -173,7 +169,7 @@ LLM·Agent 실습 (예정)
 
 ### Cloud
 
-<table>
+<table width="100%">
 <tr>
 <td valign="top">
 
