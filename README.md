@@ -1,6 +1,6 @@
 # SKALA 4th
 
-<img alt="SKALA logo" src="assets/skala-logo.png" width="420"/>
+<img alt="SKALA logo" src="assets/skala-logo.png" width="480"/>
 
 <br>
 
