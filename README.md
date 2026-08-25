@@ -118,7 +118,7 @@ JPA 기반 주식 거래 API
 <img alt="Spring Boot" src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/>
 <img alt="MyBatis" src="https://img.shields.io/badge/MyBatis-DC382D?style=flat-square"/>
 <br/>
-MyBatis 굿즈 쇼핑몰 API
+SKALA 굿즈 쇼핑몰 API
 
 </td>
 </tr>
