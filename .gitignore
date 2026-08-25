@@ -1,1 +1,9 @@
 .DS_Store
+
+# Gradle / Java build artifacts
+build/
+.gradle/
+bin/
+
+# leftover nested-git backups (from folders that used to be separate repos)
+.git.bak/
