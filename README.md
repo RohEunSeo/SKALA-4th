@@ -1,5 +1,9 @@
 # SKALA 4th
 
+<div align="center">
+
+<img alt="SKALA logo" src="assets/skala-logo.png" width="260"/>
+
 <p>
   <img alt="Java" src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=openjdk&logoColor=white"/>
   <img alt="Spring Boot" src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/>
@@ -10,8 +14,11 @@
   <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"/>
 </p>
 
-SK AI Camp **SKALA 4기** 교육 과정에서 진행한 실습·과제 코드를 모아두는 기록용 저장소입니다.
+SK AI Leader Academy **SKALA 4기** 교육 과정에서 진행한 실습·과제 코드를 모아두는 기록용 저장소입니다.
+<br/>
 분야별(AI, Backend, Cloud, Frontend, ML, Git)로 폴더를 나누어 정리했습니다.
+
+</div>
 
 ## 📁 디렉토리 구조
 
