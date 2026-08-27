@@ -1,0 +1,14 @@
+/* 외부 CSS 파일 — FormStyle.vue에서 @import로 불러옴 */
+.btn-external {
+  background-color: #42b883;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-external:hover {
+  background-color: #33a06f;
+}
