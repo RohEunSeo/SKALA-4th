@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 // ✅ [과제 5 추가] configStore import
 import { useConfigStore } from '@/stores/configStore'
 // ✅ [과제 6 추가] weatherStore import
-import { useWeatherStore } from '@/stores/weatherStore'
+import { useWeatherStore, getWeatherIconClass } from '@/stores/weatherStore'
 import { storeToRefs } from 'pinia'
 
 const route = useRoute()
@@ -62,11 +62,14 @@ const goHome = () => {
     </div>
 
     <div v-else class="detail-card">
-      <h2 class="city-title">📍 {{ cityData.name }} 상세 기상 정보</h2>
+      <h2 class="city-title">
+        <i class="wi weather-icon" :class="getWeatherIconClass(cityData)"></i>
+        {{ cityData.name }} 상세 기상 정보
+      </h2>
 
       <!-- ✅ [과제 7 수정] info-grid → el-descriptions로 교체 -->
       <el-descriptions :column="2" border class="weather-descriptions">
-        <el-descriptions-item label="현재 날씨">{{ cityData.status }}</el-descriptions-item>
+        <el-descriptions-item label="현재 날씨">{{ cityData.condition }}</el-descriptions-item>
         <!-- ✅ [과제 5 수정] displayTemp + unitSymbol로 단위 변환 표시 -->
         <el-descriptions-item label="실시간 기온">{{ displayTemp }}{{ unitSymbol }}</el-descriptions-item>
         <!-- ✅ [과제 5 수정] displayFeel + unitSymbol로 단위 변환 표시 -->
@@ -107,6 +110,11 @@ const goHome = () => {
   font-weight: 700;
   margin-bottom: 24px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ [과제 8 추가] weather-icons 아이콘 */
+.weather-icon {
+  margin-right: 6px;
 }
 
 .info-grid {

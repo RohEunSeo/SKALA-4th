@@ -93,7 +93,7 @@ weatherList.value = responses.map((res, idx) => ({
 
 ---
 
-## 💡 배운 점
+## 💡 배운 점 (기본 연동)
 
 - Pinia Store의 action 안에서 `axios` 여러 호출을 `Promise.all`로 묶으면,
   화면 쪽 코드는 "요청이 몇 개인지" 신경 쓰지 않고 `fetchAllWeather()` 한 번만 호출하면 됨
@@ -101,3 +101,109 @@ weatherList.value = responses.map((res, idx) => ({
 - mockData(동기 데이터)를 API(비동기 데이터)로 바꿀 때는 단순히 배열 출처만 바꾸는 게 아니라,
   "아직 로딩 중일 수 있다"는 상태를 화면에서 같이 처리해줘야 한다는 것을 체감함
   (`ref` + `onMounted` 1회 조회 → `computed`로 변경한 이유)
+
+---
+
+## 🌍 추가 확장 — 세계 도시 검색 & 5일 예보 (OpenWeatherMap API 추가 활용)
+
+기본 연동(위 내용) 이후, OpenWeatherMap이 제공하는 API를 더 활용해서 기능을 확장했다.
+
+### 1. 좌표 기반 조회 — 판교 추가
+
+OpenWeather는 "판교"를 도시명으로 인식하지 못한다(등록된 지명이 아님). 좌표(위도/경도)로는 조회가 되기 때문에, 도시 목록에 `query`(영문 도시명) 대신 `coords`(위도/경도)를 쓰는 항목을 허용하도록 확장했다.
+
+```js
+const cities = [
+  { id: 'city_00', name: '판교', coords: { lat: 37.3969908, lon: 127.1129974 } },
+  { id: 'city_01', name: '서울', query: 'Seoul' },
+  // ...
+]
+
+axios.get(BASE_URL, {
+  params: {
+    ...(city.coords ? { lat: city.coords.lat, lon: city.coords.lon } : { q: city.query }),
+    appid: API_KEY, units: 'metric', lang: 'kr',
+  },
+})
+```
+
+### 2. 세계 도시 검색 — Current Weather API 추가 호출
+
+기존 6개 등록 도시와 별개로, 대시보드 검색 영역에 한국/세계 토글을 추가했다. "세계"를 선택하면 등록된 도시 목록 대신 영문 도시명을 직접 입력해서 실시간으로 조회하는 검색창으로 바뀐다.
+
+```js
+// src/stores/weatherStore.js
+const searchWorldCity = async (query) => {
+  const trimmed = query.trim()
+  if (!trimmed) return
+  isWorldSearchLoading.value = true
+  worldSearchError.value = null
+  try {
+    const res = await axios.get(BASE_URL, {
+      params: { q: trimmed, appid: API_KEY, units: 'metric', lang: 'kr' },
+    })
+    worldCityResult.value = normalizeWeather(res, { id: 'world_search', name: res.data.name })
+  } catch (e) {
+    worldSearchError.value = e
+    worldCityResult.value = null
+  } finally {
+    isWorldSearchLoading.value = false
+  }
+}
+```
+
+기존 6개 도시 조회(`fetchAllWeather`)와 세계 도시 검색이 API 응답을 카드용 객체로 바꾸는 로직이 동일해서, `normalizeWeather(res, { id, name })`라는 공통 함수로 뽑아내 둘 다 재사용하게 정리했다.
+
+> OpenWeather의 Current Weather API는 **도시명**으로만 검색되고 국가명으로는 검색이 안 된다(예: "China"를 입력하면 실제로 멕시코에 있는 "China"라는 지명이 걸림). 그래서 검색창에 "국가명이 아닌 실제 도시명을 입력해 주세요" 안내 문구를 추가해서 혼동을 줄였다.
+
+### 3. 5일 예보 — Forecast API 추가
+
+상세 정보 패널에서 "상세보기"를 누르면 기존 습도/바람 속도 등에 이어 **5일 예보**가 표시된다. OpenWeather의 5일/3시간 간격 예보 API(`/data/2.5/forecast`)는 하루에 8개(3시간 간격) 데이터를 주기 때문에, 날짜별로 정오(12:00)에 가장 가까운 데이터 하나만 뽑아 5일치로 요약했다.
+
+```js
+const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast'
+
+const summarizeForecast = (list) => {
+  const byDate = new Map()
+  for (const entry of list) {
+    const date = entry.dt_txt.slice(0, 10)
+    const hour = Number(entry.dt_txt.slice(11, 13))
+    const existing = byDate.get(date)
+    if (!existing || Math.abs(hour - 12) < Math.abs(Number(existing.dt_txt.slice(11, 13)) - 12)) {
+      byDate.set(date, entry) // 그 날짜 중 정오에 가장 가까운 데이터로 교체
+    }
+  }
+  return Array.from(byDate.values()).slice(0, 5).map((entry) => ({
+    date: entry.dt_txt.slice(0, 10),
+    temp: Math.round(entry.main.temp),
+    condition: classifyWeather(entry.weather[0].id, entry.wind.speed),
+    icon: entry.weather[0].icon,
+  }))
+}
+```
+
+상세보기(`goToDetail`)를 열 때마다 그 도시 기준으로 `fetchForecast(city.id)`를 호출해서 예보를 새로 조회하기 때문에 항상 최신 데이터를 보여준다.
+
+### 곁다리로 고친 것 — Vercel 배포 시 404 라우팅
+
+배포 후 실제로 없는 경로(`/xyz` 등)에 직접 들어가면 Vue Router의 커스텀 404 페이지가 아니라 Vercel 자체 404(`NOT_FOUND`)가 떴다. Vercel이 파일 시스템 기준으로만 라우팅해서, `index.html`을 거치지 않으면 Vue Router가 아예 개입할 기회가 없기 때문. `vercel.json`에 모든 경로를 `index.html`로 돌려보내는 rewrite를 추가해서 해결했다.
+
+```json
+{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
+```
+
+### 추가/수정 파일 목록 (확장분)
+
+```
+vercel.json                    ← 신규: Vercel SPA 라우팅 rewrite
+src/
+├── stores/weatherStore.js     ← 수정: 좌표 기반 조회, searchWorldCity, fetchForecast, normalizeWeather 공통화
+└── views/WeatherHomeView.vue  ← 수정: 한국/세계 검색 토글, 세계 도시 검색 UI, 5일 예보 표시
+```
+
+### 💡 배운 점 (확장분)
+
+- **같은 API 응답을 여러 곳에서 가공한다면 정규화 함수를 하나로 뽑아두는 게 안전하다.** 등록 도시 조회와 세계 도시 검색이 API 응답을 카드 객체로 바꾸는 로직이 동일해서, `normalizeWeather()`로 합쳐두니 국가 코드(`country`) 필드 하나를 추가할 때도 한 곳만 고치면 됐다.
+- **3시간 간격 예보를 그대로 보여주면 정보가 너무 많다.** 5일치를 보여주려면 40개(5일×8회) 데이터를 그대로 나열하는 게 아니라, "하루 대표값 하나"로 요약하는 규칙(정오에 가장 가까운 값)이 필요했다.
+- **REST API는 "이름"이 아니라 "정확한 식별자"로 조회해야 한다.** 도시명 검색은 사람이 기대하는 것과 실제 매칭 결과가 다를 수 있다는 걸 "China" 검색 사례로 체감했다. 좌표 기반 조회(판교)처럼, 이름이 애매한 경우 좌표 같은 명확한 식별자를 쓰는 게 안전하다.
+- **SPA 배포는 빌드 성공이 끝이 아니다.** 로컬 개발 서버는 히스토리 모드 라우팅을 알아서 처리해주지만, 실제 배포 환경(Vercel 등)은 별도의 rewrite/fallback 설정이 필요하다는 걸 실제로 404를 겪고 나서야 체감했다.

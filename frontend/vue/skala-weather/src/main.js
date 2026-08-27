@@ -6,6 +6,10 @@ import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+// ✅ [과제 8 추가] 날씨 아이콘 폰트 라이브러리
+import 'weather-icons/css/weather-icons.min.css'
+// ✅ [과제 8 추가] 세계 도시 검색 결과 국기 배경용
+import 'flag-icons/css/flag-icons.min.css'
 
 import App from './App.vue'
 import router from './router'

@@ -5,9 +5,9 @@ import { useConfigStore } from '@/stores/configStore'
 const configStore = useConfigStore()
 // state, getters는 storeToRefs()로 꺼내야 반응성 유지됨
 // ✅ [과제 7 추가] el-switch의 켜짐/꺼짐 상태를 판단하기 위해 unit도 함께 추출
-const { unit, unitSymbol, isDark } = storeToRefs(configStore)
+const { unit, unitSymbol } = storeToRefs(configStore)
 // actions는 일반 구조 분해 할당 가능
-const { toggleUnit, toggleTheme } = configStore
+const { toggleUnit } = configStore
 </script>
 
 <template>
@@ -22,11 +22,6 @@ const { toggleUnit, toggleTheme } = configStore
       class="unit-switch"
       @change="toggleUnit"
     />
-
-    <!-- ④ 본인 추가 — 테마 전환 버튼 -->
-    <button @click="toggleTheme" class="theme-btn">
-      {{ isDark ? '☀️' : '🌙' }}
-    </button>
   </div>
 </template>
 
@@ -70,19 +65,5 @@ const { toggleUnit, toggleTheme } = configStore
 
 .unit-switch :deep(.el-switch__label.is-active) {
   color: white;
-}
-
-.theme-btn {
-  padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.2s;
-}
-
-.theme-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
 }
 </style>

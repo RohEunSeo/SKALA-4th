@@ -15,12 +15,5 @@ export const useConfigStore = defineStore('config', () => {
     unit.value = unit.value === 'celsius' ? 'fahrenheit' : 'celsius'
   }
 
-  // ④ 본인 추가 — 테마 전환
-  const theme = ref('light')
-  const isDark = computed(() => theme.value === 'dark')
-  const toggleTheme = () => {
-    theme.value = theme.value === 'light' ? 'dark' : 'light'
-  }
-
-  return { unit, unitSymbol, toggleUnit, theme, isDark, toggleTheme }
+  return { unit, unitSymbol, toggleUnit }
 })
