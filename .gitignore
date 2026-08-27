@@ -1,4 +1,5 @@
 .DS_Store
+node_modules/
 
 # Gradle / Java build artifacts
 build/
